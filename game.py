@@ -3,7 +3,6 @@ import sys
 
 class Entities(Enum):
     NULL = lambda x, y: Entity(x, y, "--")
-
 class Direction(Enum):
     RIGHT = 100
     UP = 119
@@ -44,7 +43,7 @@ class Snake(Entity):
         super().__init__(x, y, u"SS")
         self.direction = Direction.RIGHT.value
 
-    def move(self, keypress: str, game: Game):
+    def move(self, game: Game, keypress = "keypress"):
         if keypress == Direction.RIGHT.value:
             self.x += 1
             self.direction = Direction.RIGHT.value
@@ -57,7 +56,7 @@ class Snake(Entity):
         elif keypress == Direction.DOWN.value:
             self.y += 1
             self.direction = Direction.DOWN.value
-        else: self.move(self.direction)
+        else: self.move(game, self.direction)
         if(self.x < 0 or self.y < 0 or self.x >= game.x or self.y >= game.y):
             return False
         else:

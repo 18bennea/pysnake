@@ -16,7 +16,7 @@ if __name__ == '__main__':
             keypress = ord(m.getch())
             os.system('cls')
             game.set(Entities.NULL(snake.x, snake.y))
-            running = snake.move(keypress, game)
+            running = snake.move(game, keypress)
             if(not running):
                 break
             game.set(snake)
